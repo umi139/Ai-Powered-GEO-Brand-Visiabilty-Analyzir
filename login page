@@ -1,0 +1,685 @@
+
+"use client";
+
+import { useState, type FormEvent } from "react";
+
+export default function LoginPage() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(true);
+  const [message, setMessage] = useState("");
+
+  function handleLogin(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setMessage("Login UI is working. Authentication will be connected to the backend.");
+  }
+
+  return (
+    <>
+      <main className="page">
+        <div className="background-glow glow-one" />
+        <div className="background-glow glow-two" />
+
+        <section className="login-card">
+
+          {/* LEFT BRAND PANEL */}
+          <div className="brand-panel">
+            <div className="brand-top">
+              <div className="brand-logo">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path
+                    d="M9 34L19 12L29 34M13 27H25"
+                    stroke="white"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M30 13L33 19L39 22L33 25L30 31L27 25L21 22L27 19L30 13Z"
+                    fill="#8BE9FF"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <h3>GEO<span>VISION</span></h3>
+                <p>AI INTELLIGENCE PLATFORM</p>
+              </div>
+            </div>
+
+            <div className="brand-content">
+              <div className="tag">
+                <span className="tag-dot" />
+                INTELLIGENT VISIBILITY PLATFORM
+              </div>
+
+              <h1>
+                See Your Brand
+                <br />
+                Through the
+                <br />
+                <span>Eyes of AI.</span>
+              </h1>
+
+              <p className="brand-description">
+                Understand how AI-powered search engines discover,
+                recognize and recommend your brand. Turn visibility
+                into your competitive advantage.
+              </p>
+
+              <div className="feature-list">
+                <div className="feature">
+                  <span className="feature-icon">✦</span>
+                  <div>
+                    <strong>AI Visibility Intelligence</strong>
+                    <small>Discover your presence across AI search</small>
+                  </div>
+                </div>
+
+                <div className="feature">
+                  <span className="feature-icon">◈</span>
+                  <div>
+                    <strong>Brand Performance Insights</strong>
+                    <small>Understand your digital brand performance</small>
+                  </div>
+                </div>
+
+                <div className="feature">
+                  <span className="feature-icon">↗</span>
+                  <div>
+                    <strong>Smarter Growth Analytics</strong>
+                    <small>Make informed visibility decisions</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="brand-footer">
+              <span>POWERED BY ARTIFICIAL INTELLIGENCE</span>
+              <span>© 2026 GEOVISION</span>
+            </div>
+          </div>
+
+          {/* RIGHT LOGIN PANEL */}
+          <div className="form-panel">
+            <div className="form-top">
+              <span className="secure-dot" />
+              SECURE WORKSPACE ACCESS
+            </div>
+
+            <div className="form-heading">
+              <span className="welcome">WELCOME BACK</span>
+              <h2>Sign in to your account</h2>
+              <p>Enter your details to access your workspace.</p>
+            </div>
+
+            <form onSubmit={handleLogin}>
+              <div className="input-group">
+                <label htmlFor="email">Email Address</label>
+                <div className="input-box">
+                  <span className="input-icon">✉</span>
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="name@company.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="input-group">
+                <label htmlFor="password">Password</label>
+                <div className="input-box">
+                  <span className="input-icon">♙</span>
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    className="show-button"
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
+              </div>
+
+              <div className="options">
+                <label className="remember">
+                  <input
+                    type="checkbox"
+                    checked={remember}
+                    onChange={(e) => setRemember(e.target.checked)}
+                  />
+                  Remember me
+                </label>
+
+                <button
+                  type="button"
+                  className="forgot"
+                  onClick={() =>
+                    setMessage("Password recovery will be added soon.")
+                  }
+                >
+                  Forgot password?
+                </button>
+              </div>
+
+              <button className="submit-button" type="submit">
+                <span>Sign In to Workspace</span>
+                <span className="arrow">→</span>
+              </button>
+
+              {message && <p className="message">{message}</p>}
+            </form>
+
+            <div className="divider">
+              <span />
+              <small>SECURE ACCESS</small>
+              <span />
+            </div>
+
+            <div className="security-note">
+              <span>♢</span>
+              Your workspace and information are protected.
+            </div>
+
+            <div className="form-footer">
+              AI-POWERED GEO BRAND VISIBILITY ANALYZER
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        html, body {
+          min-height: 100%;
+          font-family: 'Inter', Arial, sans-serif;
+        }
+
+        body {
+          background: #070d19;
+          color: #ffffff;
+        }
+
+        button, input {
+          font: inherit;
+        }
+
+        .page {
+          min-height: 100vh;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 35px;
+          background:
+            radial-gradient(ellipse at 15% 20%, #102d50 0%, transparent 40%),
+            radial-gradient(ellipse at 90% 90%, #242052 0%, transparent 38%),
+            #070d19;
+        }
+
+        .background-glow {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(100px);
+          pointer-events: none;
+        }
+
+        .glow-one {
+          width: 250px;
+          height: 250px;
+          background: #0878b9;
+          opacity: 0.14;
+          top: 5%;
+          left: 5%;
+        }
+
+        .glow-two {
+          width: 280px;
+          height: 280px;
+          background: #5140c9;
+          opacity: 0.14;
+          right: 5%;
+          bottom: 5%;
+        }
+
+        .login-card {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          max-width: 1160px;
+          min-height: 690px;
+          display: grid;
+          grid-template-columns: 1.08fr 0.92fr;
+          background: #101a2b;
+          border: 1px solid rgba(139, 180, 220, 0.17);
+          border-radius: 24px;
+          overflow: hidden;
+          box-shadow: 0 35px 100px rgba(0,0,0,0.5);
+        }
+
+        .brand-panel {
+          position: relative;
+          padding: 42px 48px 28px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          overflow: hidden;
+          background:
+            radial-gradient(circle at 80% 45%, rgba(0,194,255,0.14), transparent 40%),
+            linear-gradient(145deg, #102c49, #11192e 75%);
+        }
+
+        .brand-panel::after {
+          content: "";
+          position: absolute;
+          width: 370px;
+          height: 370px;
+          border: 1px solid rgba(87,204,255,0.16);
+          border-radius: 50%;
+          right: -190px;
+          bottom: 70px;
+          box-shadow:
+            0 0 0 35px rgba(87,204,255,0.035),
+            0 0 0 75px rgba(87,204,255,0.025);
+          pointer-events: none;
+        }
+
+        .brand-top {
+          display: flex;
+          align-items: center;
+          gap: 13px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .brand-logo {
+          width: 53px;
+          height: 53px;
+          display: grid;
+          place-items: center;
+          border-radius: 15px;
+          background: linear-gradient(135deg, #14c7ed, #4d65f6);
+          box-shadow: 0 8px 30px rgba(20,190,255,0.25);
+        }
+
+        .brand-logo svg {
+          width: 39px;
+          height: 39px;
+        }
+
+        .brand-top h3 {
+          font-size: 19px;
+          letter-spacing: 1.3px;
+          font-weight: 800;
+        }
+
+        .brand-top h3 span {
+          color: #4dd5ff;
+        }
+
+        .brand-top p {
+          margin-top: 5px;
+          font-size: 8px;
+          color: #8da9c5;
+          letter-spacing: 2px;
+        }
+
+        .brand-content {
+          position: relative;
+          z-index: 1;
+          margin: 45px 0;
+        }
+
+        .tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          padding: 9px 13px;
+          border: 1px solid rgba(76,204,255,0.24);
+          border-radius: 30px;
+          color: #83dcff;
+          font-size: 9px;
+          letter-spacing: 1.4px;
+          background: rgba(20,160,220,0.08);
+        }
+
+        .tag-dot, .secure-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #39dfad;
+          box-shadow: 0 0 12px #39dfad;
+        }
+
+        .brand-content h1 {
+          margin: 27px 0 18px;
+          font-size: clamp(34px, 4vw, 49px);
+          line-height: 1.14;
+          font-weight: 800;
+          letter-spacing: -2px;
+        }
+
+        .brand-content h1 span {
+          color: #4bcaff;
+        }
+
+        .brand-description {
+          max-width: 430px;
+          font-size: 12px;
+          line-height: 1.9;
+          color: #a8bbd1;
+        }
+
+        .feature-list {
+          display: grid;
+          gap: 21px;
+          margin-top: 35px;
+        }
+
+        .feature {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .feature-icon {
+          width: 37px;
+          height: 37px;
+          display: grid;
+          place-items: center;
+          color: #55d3ff;
+          font-size: 19px;
+          background: rgba(39,181,239,0.10);
+          border: 1px solid rgba(39,181,239,0.19);
+          border-radius: 11px;
+        }
+
+        .feature strong {
+          display: block;
+          font-size: 11px;
+          font-weight: 600;
+          color: #e2f1ff;
+        }
+
+        .feature small {
+          display: block;
+          margin-top: 5px;
+          font-size: 9px;
+          color: #91a8c2;
+        }
+
+        .brand-footer {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+          color: #708ba7;
+          font-size: 8px;
+          letter-spacing: 1px;
+        }
+
+        .form-panel {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 55px 53px;
+          background: linear-gradient(145deg, #111e31, #101827);
+        }
+
+        .form-top {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #91a7c0;
+          font-size: 9px;
+          letter-spacing: 1.8px;
+          margin-bottom: 62px;
+        }
+
+        .form-heading .welcome {
+          color: #49caff;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 2.5px;
+        }
+
+        .form-heading h2 {
+          margin-top: 14px;
+          font-size: 27px;
+          font-weight: 700;
+          letter-spacing: -1px;
+          color: #f3f7ff;
+        }
+
+        .form-heading p {
+          margin-top: 10px;
+          margin-bottom: 38px;
+          color: #94a7bd;
+          font-size: 11px;
+        }
+
+        .input-group {
+          margin-bottom: 23px;
+        }
+
+        .input-group label {
+          display: block;
+          margin-bottom: 10px;
+          color: #dce7f4;
+          font-size: 11px;
+          font-weight: 600;
+        }
+
+        .input-box {
+          display: flex;
+          align-items: center;
+          height: 53px;
+          padding: 0 14px;
+          gap: 12px;
+          background: #0b1423;
+          border: 1px solid #30425b;
+          border-radius: 10px;
+          transition: 0.25s;
+        }
+
+        .input-box:focus-within {
+          border-color: #36bfff;
+          box-shadow: 0 0 0 3px rgba(54,191,255,0.10);
+        }
+
+        .input-icon {
+          color: #58bfe9;
+          font-size: 16px;
+        }
+
+        .input-box input {
+          min-width: 0;
+          flex: 1;
+          border: none;
+          outline: none;
+          color: white;
+          background: transparent;
+          font-size: 11px;
+        }
+
+        .input-box input::placeholder {
+          color: #70839a;
+        }
+
+        .show-button {
+          border: none;
+          background: transparent;
+          color: #51caff;
+          cursor: pointer;
+          font-size: 10px;
+          font-weight: 600;
+        }
+
+        .options {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          margin: 25px 0;
+        }
+
+        .remember {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #aebed0;
+          font-size: 10px;
+          cursor: pointer;
+        }
+
+        .remember input {
+          accent-color: #26b9f4;
+        }
+
+        .forgot {
+          border: none;
+          background: transparent;
+          color: #51caff;
+          cursor: pointer;
+          font-size: 10px;
+        }
+
+        .submit-button {
+          width: 100%;
+          height: 53px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 13px;
+          color: white;
+          background: linear-gradient(100deg, #159ee9, #5265f4);
+          border: none;
+          border-radius: 10px;
+          font-size: 12px;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 9px 28px rgba(43,125,255,0.23);
+          transition: 0.25s;
+        }
+
+        .submit-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 13px 32px rgba(43,125,255,0.35);
+        }
+
+        .arrow {
+          font-size: 19px;
+        }
+
+        .message {
+          margin-top: 13px;
+          color: #69d7ff;
+          font-size: 10px;
+          line-height: 1.6;
+        }
+
+        .divider {
+          display: flex;
+          align-items: center;
+          gap: 13px;
+          margin: 34px 0 19px;
+        }
+
+        .divider span {
+          height: 1px;
+          flex: 1;
+          background: #29394e;
+        }
+
+        .divider small {
+          color: #758ba4;
+          font-size: 8px;
+          letter-spacing: 1.5px;
+        }
+
+        .security-note {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 9px;
+          color: #9cafc4;
+          font-size: 9px;
+        }
+
+        .security-note span {
+          color: #4acbff;
+          font-size: 17px;
+        }
+
+        .form-footer {
+          margin-top: 40px;
+          text-align: center;
+          color: #657d98;
+          font-size: 8px;
+          letter-spacing: 1.3px;
+        }
+
+        @media (max-width: 850px) {
+          .page {
+            padding: 18px;
+          }
+
+          .login-card {
+            max-width: 520px;
+            grid-template-columns: 1fr;
+          }
+
+          .brand-panel {
+            display: none;
+          }
+
+          .form-panel {
+            padding: 45px 35px;
+          }
+
+          .form-top {
+            margin-bottom: 45px;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .page {
+            padding: 12px;
+          }
+
+          .form-panel {
+            padding: 35px 22px;
+          }
+
+          .form-heading h2 {
+            font-size: 23px;
+          }
+
+          .options {
+            flex-wrap: wrap;
+          }
+        }
+      `}</style>
+    </>
+  );
+}
